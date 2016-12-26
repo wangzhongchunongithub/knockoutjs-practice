@@ -1,0 +1,54 @@
+﻿.container {
+    padding-top: 25px;
+    height: 560px;
+}
+.app-text-big{
+    font-size: 20px;
+}
+.app-text-sm{
+    font-size: 10px;
+}
+
+.peoplePicker-div{
+    width: 200px;
+    background-color: #ddd;
+    opacity: 1;
+    z-index: 999;
+    position: relative;
+}
+.peoplePicker-list{
+    padding-left:2px;
+    width: 200px;
+    max-height: 130px;
+    overflow-y:scroll;
+    list-style-type:none;
+    opacity: 1;
+    background-color: #ddd;
+}
+
+.peoplePicker-item{
+    cursor: pointer;
+}
+
+.peoplePicker-input{
+    width: 200px;
+    padding-left:1px;
+}
+.peoplePicker-delete-link{
+    font-size: 10px;
+    color:#d58512;
+    cursor: pointer;
+}
+.peoplePicker-res-name{
+    cursor: pointer;
+}
+.peoplePicker-displayer{
+    z-index: 2;
+    position: relative;
+}
+.offeringoption:hover{
+    cursor: hand;
+}
+.offeringgroup:hover{
+    cursor: auto;
+}

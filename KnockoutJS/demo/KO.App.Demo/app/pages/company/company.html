@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>company</title>
+    <script type="text/javascript" src="../../../libs/knockout.js"></script>
+    <script type="text/javascript" src="../../bindingHandlers/bgColor.js"></script>
+    <script type="text/javascript" src="../../koExtensions/funcExtensions.js"></script>
+    <script type="text/javascript" src="../../appUtilities/utils.js"></script>
+    <link type="text/css" rel="stylesheet" href="../../styles/bootstrap.css" />
+    <link type="text/css" rel="stylesheet" href="../../styles/myApp.style.css" />
+</head>
+<body>
+<div>
+    <span class="text-success">
+         Background Color:<input data-bind="textInput:styles.bgColor" /><br><br>
+    </span>
+</div>
+<div class="container" data-bind="bgColor:styles.bgColor()">
+    <span class="text-success app-text-big">Welcome</span>
+    <button class="btn btn-primary btn-sm pull-right" data-bind="click:operations.submit">Submit</button>
+    <hr />
+    Last Modified:&nbsp;<span class="text-success" data-bind="text:biz.lastUpdated"></span><br>
+
+    <!--ko with:data-->
+    Name<input class="form-control" data-bind="textInput:$data.company.name,uniqueName: true,style:{color:'red'" />
+
+    Abbreviation<input class="form-control" data-bind="value:company.abbreviation" />
+
+    <span class="text-left text-success small" data-bind="text:title"></span>
+    <!--/ko-->
+    <br />
+    <span class="text-left text-warning small" data-bind="text:biz.companyTitle"></span>
+
+    <br />
+</div>
+
+</body>
+<script src="../../models/staff.js"></script>
+<script src="company.js"></script>
+</html>

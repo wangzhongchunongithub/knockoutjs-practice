@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>employees</title>
+    <script type="text/javascript" src="../../../libs/knockout.js"></script>
+    <script type="text/javascript" src="../../appUtilities/utils.js"></script>
+    <script type="text/javascript" src="../../bindingHandlers/bgColor.js"></script>
+    <script type="text/javascript" src="../../extensions/extension.js"></script>
+    <script type="text/javascript" src="../../customFunctions/customFunctions.js"></script>
+
+    <script src="../../models/staff.js"></script>
+    <script src="../../components/peopleSelector.js"></script>
+    <script src="../../components/pelplePicker.js"></script>
+    <link type="text/css" rel="stylesheet" href="../../styles/bootstrap.css" />
+    <link type="text/css" rel="stylesheet" href="../../styles/myApp.style.css" />
+</head>
+<body>
+<div class="container">
+    <span class="text-success app-text-big">Welcome</span>
+    <button class="btn btn-primary btn-sm pull-right" data-bind="click:operations.submit">Submit</button>
+    <hr>
+    Last Modified:&nbsp;<span class="text-success" data-bind="text:lastUpdated"></span>
+
+    Branch Count:(<label class="control-label" data-bind="text:$data.data.branches.count"></label>)
+    <br>
+
+    <!--ko with:data.branches-->
+    <!--ko foreach:detail-->
+    <div class="form-inline bg-primary">
+        Branch:<label class="control-label" data-bind="text:fullName"></label>&nbsp;&nbsp;
+
+        Short Name:<input class="form-control input-sm" data-bind="value:shortName" />&nbsp;&nbsp;
+
+        Manager:<label class="control-label" data-bind="text:manager.name"></label>
+
+        <!-- Assistant:<people-selector params='branch:$data,val:managerAssistant'></people-selector> -->
+        <span data-bind='component: {
+        name: "people-selector",
+        params: { branch:$data,val:managerAssistant }
+        }'></span>
+
+        HR:<people-picker params="{person:hr}"></people-picker>
+        <br>
+    </div>
+    <!--ko foreach:employees-->
+    <div>
+        <!--ko if:$index() === $parent.employees().length -1 -->
+        <!--ko if:$root.operations.test($root)-->
+        <!--/ko-->
+        <!--ko if:$root.operations.test($parent)-->
+        <!--/ko-->
+        <!--ko if:$root.operations.test($parentContext)-->
+        <!--/ko-->
+        <!--ko if:$root.operations.test($context)-->
+        <!--/ko-->
+        <!--ko if:$root.operations.test($context.$data)-->
+        <!--/ko-->
+        <!--/ko-->
+        <p data-bind="style:{'background-color':($data.email === $parent.manager.email?'#00b388':'#a6e1ec') },attr:{'title':($data.email === $parent.manager.email?$parent.manager.name + ' is a Manager':'Regular Employee') }">
+
+            <label class="control-label" data-bind="text:$index() + 1"></label>.&nbsp;
+
+            Employee ID:<label class="control-label" data-bind="text:eid"></label>&nbsp;&nbsp;
+
+            Department:<label class="control-label" data-bind="text:$parent.shortName().toUpperCase()"></label>
+
+            (<label class="control-label" data-bind="text:$parentContext.$data.location"></label>)&nbsp;&nbsp;
+
+            Manager:<label class="control-label" data-bind="text:$parent.manager.name"></label> (<label class="control-label" data-bind="text:$parent.manager.email"></label>)
+
+            <br />
+        </p>
+        Employee Name:<input class="form-control" data-bind="textInput:$context.$data.name" />
+
+        <label class="text-error bg-warning help-block app-text-sm" data-bind="visible:$context.$data.name.hasError(),text:$context.$data.name.message()"></label>
+
+        Email:<input class="form-control" data-bind="value:$data.email,enable:false" />
+
+        Phone:<input class="form-control" data-bind="textInput:phone" />
+
+        <label class="text-error bg-warning help-block app-text-sm" data-bind="visible:phone.hasError(),text:phone.message()"></label>
+        <hr />
+    </div>
+    <!--/ko-->
+    <!--/ko-->
+    <!--/ko-->
+    <br />
+    <span class="text-left text-warning small" data-bind="text:$context.$data.lastUpdated"></span>
+</div>
+</body>
+<script src="employee.js"></script>
+</html>
