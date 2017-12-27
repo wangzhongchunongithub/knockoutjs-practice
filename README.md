@@ -1,5 +1,6 @@
 # KnockoutJS_Practice
-The project involved some knowledge points about KnockoutJS  
+The project involved some knowledge points about KnockoutJS.    
+
 It can be mainly used to test functionalities or features of KO  
 
 You can download the repository,and expand the sub folders. You can Open the following file through your browser to view the sample pages: 
