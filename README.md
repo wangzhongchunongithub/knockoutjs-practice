@@ -1,4 +1,4 @@
-# KnockoutJS_Practice
+# knockoutjs-practice
 The project involved some knowledge points about KnockoutJS.    
 
 It can be mainly used to study functionalities or features of KO  
